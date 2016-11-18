@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * auther：wzy
@@ -38,16 +39,18 @@ public class NetWorkExecute implements NetWorkCore {
      * default GET
      */
     private Method mMethod = Method.GET;
-
+    public static NetRequestQueue mRequestQueue;
+    private Map<String, String> mParameter;
 
     public NetWorkExecute(ResponseListener responseListener, String url) {
-        this(responseListener, Method.GET, url);
+        this(responseListener, Method.GET, url, null);
     }
 
-    public NetWorkExecute(ResponseListener responseListener, Method method, String url) {
+    public NetWorkExecute(ResponseListener responseListener, Method method, String url, Map<String, String> parameter) {
         mMethod = method;
         mResponseListener = responseListener;
         this.mUrl = url;
+        mParameter = parameter;
         mThreadPool = ThreadPoolProxyFactory.getNormalNetWorkThreadPoolProxy();
     }
 
