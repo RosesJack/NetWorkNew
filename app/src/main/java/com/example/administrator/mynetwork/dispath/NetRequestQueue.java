@@ -8,7 +8,6 @@ package com.example.administrator.mynetwork.dispath;
  */
 
 public class NetRequestQueue {
-<<<<<<< HEAD
 
     private NetRequestQueue() {
     }
@@ -18,8 +17,6 @@ public class NetRequestQueue {
     }
 
     private static NetRequestQueue mRequestQueue;
-=======
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
     /**
      * core for save queue
      */
@@ -34,11 +31,7 @@ public class NetRequestQueue {
      *
      * @param request
      */
-<<<<<<< HEAD
     public NetRequestQueue addToQueue(Request request) {
-=======
-    public void addToQueue(Request request) {
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
         if (mMostNewRequest == null) {
             synchronized (NetRequestQueue.class) {
                 if (mMostNewRequest == null) {
@@ -49,10 +42,7 @@ public class NetRequestQueue {
             request.next = mMostNewRequest;
             mMostNewRequest = request;
         }
-<<<<<<< HEAD
         return this;
-=======
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
     }
 
     /**
@@ -60,6 +50,7 @@ public class NetRequestQueue {
      *
      * @return Request
      */
+
     public Request getOutFromQueue() {
         if (mMostNewRequest == null) {
             return null;
@@ -69,7 +60,7 @@ public class NetRequestQueue {
         temp.next = null;
         return temp;
     }
-<<<<<<< HEAD
+
 
 
     /**
@@ -111,6 +102,4 @@ public class NetRequestQueue {
                             mRequestQueue.mMostNewRequest.getRequestParameter());
         } while (mRequestQueue.next() != null);
     }
-=======
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
 }

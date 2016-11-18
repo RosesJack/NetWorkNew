@@ -1,7 +1,7 @@
 package com.example.administrator.mynetwork.dispath;
 
-<<<<<<< HEAD
 import java.util.Map;
+
 
 /**
  * auther：wzy
@@ -48,28 +48,15 @@ public abstract class Request {
         return requestUrl;
     }
 
-    public Request setRequestUrl(String requestUrl) {
+    public void setRequestUrl(String requestUrl) {
         this.requestUrl = requestUrl;
-        return this;
     }
 
     public Map<String, String> getRequestParameter() {
         return requestParameter;
     }
 
-    public Request setRequestParameter(Map<String, String> requestParameter) {
+    public void setRequestParameter(Map<String, String> requestParameter) {
         this.requestParameter = requestParameter;
-        return this;
     }
-=======
-/**
- * auther：wzy
- * date：2016/11/17 00 :32
- * desc: 请求
- */
-
-public class Request {
-    public String flag;
-    public Request next;
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
 }
