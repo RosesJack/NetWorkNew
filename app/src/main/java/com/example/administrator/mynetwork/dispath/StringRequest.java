@@ -9,8 +9,8 @@ package com.example.administrator.mynetwork.dispath;
 public class StringRequest extends Request {
 
 
-    public StringRequest(String response, ResponseListener mResponseListener) {
-        super(response, mResponseListener);
+    public StringRequest(ResponseListener mResponseListener) {
+        super(mResponseListener);
     }
 
     @Override

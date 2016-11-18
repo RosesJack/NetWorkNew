@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         }, "http://www.baidu.com");
         netWorkExecute.start();*/
         for (int i = 0; i < 10; i++) {
-            Request request = new StringRequest(null, null);
+            Request request = new StringRequest(null);
             request.response = "第" + i + "个";
             NetRequestQueue.getSingleRequestQueue().addToQueue(request);
         }

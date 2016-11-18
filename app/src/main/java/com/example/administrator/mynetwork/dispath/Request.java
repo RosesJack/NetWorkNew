@@ -15,8 +15,7 @@ public abstract class Request {
         this.mResponseListener = mResponseListener;
     }
 
-    public Request(String response, ResponseListener mResponseListener) {
-        this.response = response;
+    public Request(ResponseListener mResponseListener) {
         this.mResponseListener = mResponseListener;
     }
 
