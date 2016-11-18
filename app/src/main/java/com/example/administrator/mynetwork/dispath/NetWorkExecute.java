@@ -12,10 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-<<<<<<< HEAD
 import java.util.Map;
-=======
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
 
 /**
  * auther：wzy
@@ -29,7 +26,7 @@ public class NetWorkExecute implements NetWorkCore {
      * default{1000ms}
      */
     private int connectionTimeOut = 1000;
-    private final ThreadPoolProxy mThreadPool;
+    private ThreadPoolProxy mThreadPool;
 
     public static enum Method {
         GET, POST;
@@ -42,7 +39,6 @@ public class NetWorkExecute implements NetWorkCore {
      * default GET
      */
     private Method mMethod = Method.GET;
-<<<<<<< HEAD
     public static NetRequestQueue mRequestQueue;
     private Map<String, String> mParameter;
 
@@ -55,18 +51,13 @@ public class NetWorkExecute implements NetWorkCore {
         mResponseListener = responseListener;
         this.mUrl = url;
         mParameter = parameter;
-=======
 
-
-    public NetWorkExecute(ResponseListener responseListener, String url) {
-        this(responseListener, Method.GET, url);
     }
 
     public NetWorkExecute(ResponseListener responseListener, Method method, String url) {
         mMethod = method;
         mResponseListener = responseListener;
         this.mUrl = url;
->>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
         mThreadPool = ThreadPoolProxyFactory.getNormalNetWorkThreadPoolProxy();
     }
 
