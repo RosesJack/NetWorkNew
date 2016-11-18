@@ -9,7 +9,10 @@ import com.example.administrator.mynetwork.dispath.NetRequestQueue;
 import com.example.administrator.mynetwork.dispath.NetWorkExecute;
 import com.example.administrator.mynetwork.dispath.Request;
 import com.example.administrator.mynetwork.dispath.ResponseListener;
+<<<<<<< HEAD
 import com.example.administrator.mynetwork.dispath.StringRequest;
+=======
+>>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, "http://www.baidu.com");
         netWorkExecute.start();*/
+<<<<<<< HEAD
         for (int i = 0; i < 10; i++) {
             Request request = new StringRequest(null);
             request.response = "第" + i + "个";
@@ -51,5 +55,16 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "当前：" + response);
         } while (NetRequestQueue.getSingleRequestQueue().next() != null);
 
+=======
+        NetRequestQueue queue = new NetRequestQueue();
+        for (int i = 0; i < 10; i++) {
+            Request request = new Request();
+            request.flag = "第" + i + "个";
+            queue.addToQueue(request);
+        }
+        for (int i = 0; i < 10; i++) {
+            Log.i(TAG, "取出队列并展示：" + queue.getOutFromQueue().flag);
+        }
+>>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
     }
 }

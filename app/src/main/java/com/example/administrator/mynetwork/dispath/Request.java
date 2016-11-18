@@ -1,5 +1,6 @@
 package com.example.administrator.mynetwork.dispath;
 
+<<<<<<< HEAD
 import java.util.Map;
 
 /**
@@ -60,4 +61,15 @@ public abstract class Request {
         this.requestParameter = requestParameter;
         return this;
     }
+=======
+/**
+ * auther：wzy
+ * date：2016/11/17 00 :32
+ * desc: 请求
+ */
+
+public class Request {
+    public String flag;
+    public Request next;
+>>>>>>> 30df204c923f90c17d03ef64bb9110ab66645af8
 }
