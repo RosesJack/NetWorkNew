@@ -4,8 +4,13 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.administrator.mynetwork.dispath.NetWorkExecute;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -22,5 +27,14 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.example.administrator.mynetwork", appContext.getPackageName());
+    }
+    @Test
+    public void test2(){
+        NetWorkExecute netWorkExecute = new NetWorkExecute(null, null);
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "wang");
+        map.put("age", "15");
+        String s = netWorkExecute.mapToParameterStr(map);
+        System.out.println(s);
     }
 }

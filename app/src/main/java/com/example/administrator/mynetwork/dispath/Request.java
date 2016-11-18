@@ -10,15 +10,23 @@ import java.util.Map;
  */
 
 public abstract class Request {
+    public Request(String url, Map<String, String> map, ResponseListener mResponseListener) {
+        this.requestUrl = url;
+        this.requestParameter = map;
+    }
+
+    public Request(String url, ResponseListener mResponseListener) {
+        this.requestUrl = url;
+        this.mResponseListener = mResponseListener;
+    }
+
+
     private ResponseListener mResponseListener;
 
     public void setResponseListener(ResponseListener mResponseListener) {
         this.mResponseListener = mResponseListener;
     }
 
-    public Request(ResponseListener mResponseListener) {
-        this.mResponseListener = mResponseListener;
-    }
 
     /**
      * 请求地址

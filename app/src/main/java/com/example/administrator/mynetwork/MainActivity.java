@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.example.administrator.mynetwork.dispath.NetRequestQueue;
 import com.example.administrator.mynetwork.dispath.Request;
+import com.example.administrator.mynetwork.dispath.ResponseListener;
 import com.example.administrator.mynetwork.dispath.StringRequest;
 
 
@@ -31,14 +32,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }, "http://www.baidu.com");
         netWorkExecute.start();*/
-        for (int i = 0; i < 10; i++) {
-            Request request = new StringRequest(null);
-            request.response = "第" + i + "个";
-            NetRequestQueue.getSingleRequestQueue().addToQueue(request);
-        }
-        do {
-            String response = NetRequestQueue.getSingleRequestQueue().mMostNewRequest.response;
-            Log.i(TAG, "当前：" + response);
-        } while (NetRequestQueue.getSingleRequestQueue().next() != null);
+
+        StringRequest request = new StringRequest("http://www.baidu.com", new ResponseListener() {
+            @Override
+            public void sucessBack(String result) {
+                Log.i(TAG, "成功返回的结果" + result);
+            }
+
+            @Override
+            public void failBack(Exception e) {
+
+            }
+        });
+        NetRequestQueue.getSingleRequestQueue().addToQueue(request).start();
     }
 }

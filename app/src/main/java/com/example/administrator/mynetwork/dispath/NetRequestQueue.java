@@ -62,7 +62,6 @@ public class NetRequestQueue {
     }
 
 
-
     /**
      * 内部维护一个单例请求队列
      *
@@ -96,10 +95,11 @@ public class NetRequestQueue {
             return;
         }
         do {
-            NetWorkExecute netWorkExecute =
-                    new NetWorkExecute(mRequestQueue.mMostNewRequest.getResponseListener(),
-                            mDefaultMethod, mRequestQueue.mMostNewRequest.getRequestUrl(),
-                            mRequestQueue.mMostNewRequest.getRequestParameter());
+            if (mRequestQueue.mMostNewRequest != null) {
+                NetWorkExecute netWorkExecute =
+                        new NetWorkExecute(NetWorkExecute.Method.GET, mRequestQueue.mMostNewRequest);
+                netWorkExecute.start();
+            }
         } while (mRequestQueue.next() != null);
     }
 }

@@ -13,6 +13,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Set;
+
+import static android.R.attr.key;
+import static android.R.attr.keySet;
 
 /**
  * auther：wzy
@@ -21,6 +25,7 @@ import java.util.Map;
  */
 
 public class NetWorkExecute implements NetWorkCore {
+    private Request mRequest;
     /**
      * out time
      * default{1000ms}
@@ -51,7 +56,17 @@ public class NetWorkExecute implements NetWorkCore {
         mResponseListener = responseListener;
         this.mUrl = url;
         mParameter = parameter;
+        mThreadPool = ThreadPoolProxyFactory.getNormalNetWorkThreadPoolProxy();
+    }
 
+    public NetWorkExecute(Method method, Request request) {
+        this.mRequest = request;
+        this.mMethod = method;
+        String urlBehind = mapToParameterStr(mRequest.getRequestParameter());
+        String url = mRequest.getRequestUrl() + urlBehind;
+        this.mUrl = url;
+        this.mResponseListener = request.getResponseListener();
+        mThreadPool = ThreadPoolProxyFactory.getNormalNetWorkThreadPoolProxy();
     }
 
     public NetWorkExecute(ResponseListener responseListener, Method method, String url) {
@@ -60,6 +75,31 @@ public class NetWorkExecute implements NetWorkCore {
         this.mUrl = url;
         mThreadPool = ThreadPoolProxyFactory.getNormalNetWorkThreadPoolProxy();
     }
+
+    /**
+     * map集合转换成url字符串
+     *
+     * @param map
+     * @return
+     */
+    public String mapToParameterStr(Map<String, String> map) {
+        if (map == null || map.size() <= 0) {
+            return "";
+        }
+        Set<String> keySet = map.keySet();
+        StringBuffer sb = new StringBuffer();
+        sb.append("?");
+        int i = 0;
+        for (String s : keySet) {
+            if (i != 0) {
+                sb.append("&");
+            }
+            sb.append(s + "=" + map.get(s));
+            i++;
+        }
+        return sb.toString();
+    }
+
 
     public void start() {
         loadUrl(mUrl);
